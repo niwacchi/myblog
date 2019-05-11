@@ -4,10 +4,6 @@
 ```sh
 composer install
 ```
-### Start server
-```sh
-php artisan server --host <IP Address> --port <Port No>
-```
 ### Create database
 - create database file.
 ```sh
@@ -17,4 +13,12 @@ touch database/database.sqlite
 - do migration.
 ```sh
 php artisan migrate
+```
+### Create Application key
+```sh
+php artisan key:generate
+```
+### Start server
+```sh
+php artisan serve --host <IP Address> --port <Port No>
 ```
