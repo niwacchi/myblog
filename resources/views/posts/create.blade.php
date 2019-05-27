@@ -20,7 +20,53 @@
     @endif
   </p>
   <p>
-    <input type="submit" value="Add">
+    <input type="submit" value="Add" name="add1">
+  </p>
+</form>
+<form method="post" action="{{ url('/posts') }}">
+  {{ csrf_field() }}
+  <p>
+    <input type="text" name="title2" placeholder="enter title" value="{{ old('title2') }}">
+    @if($errors->has('title'))
+    <span class="error">{{ $errors->first('title') }}</span>
+    @endif
+  </p>
+  <p>
+    @php
+      //dd($id);
+      dd(old('grp1'));
+      if( $id === '1' && old('grp1') === 'rdo1') {
+        $rdo1Checked = 'checked';
+      }
+      if( $id === '2' && old('grp1') === 'rdo2') {
+        $rdo2Checked = 'checked';
+      }
+      if( $id === '3' && old('grp1') === 'rdo3') {
+        $rdo3Checked = 'checked';
+      }
+
+      $rdo1Checked = '';
+      if ( old('grp1') === 'rdo1' ) {
+        $rdo1Checked = 'checked';
+      }
+
+      $rdo2Checked = '';
+      if ( old('grp1') === 'rdo2' ) {
+        $rdo2Checked = 'checked';
+      }
+
+      $rdo3Checked = '';
+      if ( old('grp1') === 'rdo3' ) {
+        $rdo3Checked = 'checked';
+      }
+
+    @endphp
+    <input type="radio" name="grp1" id="rdo1" value="rdo1" {{ $rdo1Checked }}>
+    <input type="radio" name="grp1" id="rdo2" value="rdo2" {{ $rdo2Checked }}>
+    <input type="radio" name="grp1" id="rdo3" value="rdo3" {{ $rdo2Checked }}>
+  </p>
+  <p>
+    <input type="submit" value="Add" name="add2">
   </p>
 </form>
 @endsection

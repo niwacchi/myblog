@@ -22,13 +22,25 @@ class PostsController extends Controller
   }
 
   public function create(){
-    return view('posts.create');
+    $grp1 = 'rdo1';
+    $id = '1';
+
+    return view('posts.create',  ['grp1' => $grp1, 'id' => $id]);
   }
 
   public function store(PostRequest $request){
     $post = new Post();
-    $post->title = $request->title;
-    $post->body = $request->body;
+
+    dd($request);
+
+    if(Input::get('add1')) {
+      $post->title = $request->title;
+      $post->body = $request->body;
+    } else if(Input::get('add2')) {
+      $post->title = $request->title2;
+      $post->body = $request->body2;
+    }
+    
     $post->save();
     return redirect('/');
   }

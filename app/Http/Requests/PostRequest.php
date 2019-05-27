@@ -29,9 +29,16 @@ class PostRequest extends FormRequest
         ];
     }
 
-    public function messages(){
+    /**
+     * Get the validation error messages.
+     * 
+     * @return array
+     */
+    public function messages()
+    {
         return [
-            'title.required' => 'please enter title!!!'
+            'title.required' => 'please enter title!!!',
+            'body.required' =>  'please enter body!!!',
         ];
     }
 }
